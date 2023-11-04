@@ -1,67 +1,41 @@
 import React from "react"
+import logo from "../../components/assets/images/logo.svg"
+import { Link } from "react-router-dom"
 
-const Categories = () => {
-  const data = [
-    {
-      cateImg: "./images/category/cat1.png",
-      cateName: "Fashion",
-    },
-    {
-      cateImg: "./images/category/cat2.png",
-      cateName: "Electronic",
-    },
-    {
-      cateImg: "./images/category/cat3.png",
-      cateName: "Cars",
-    },
-    {
-      cateImg: "./images/category/cat4.png",
-      cateName: "Home & Garden",
-    },
-    {
-      cateImg: "./images/category/cat5.png",
-      cateName: "Gifts",
-    },
-    {
-      cateImg: "./images/category/cat6.png",
-      cateName: "Music",
-    },
-    {
-      cateImg: "./images/category/cat7.png",
-      cateName: "Health & Beauty",
-    },
-    {
-      cateImg: "./images/category/cat8.png",
-      cateName: "Pets",
-    },
-    {
-      cateImg: "./images/category/cat9.png",
-      cateName: "Baby Toys",
-    },
-    {
-      cateImg: "./images/category/cat10.png",
-      cateName: "Groceries",
-    },
-    {
-      cateImg: "./images/category/cat11.png",
-      cateName: "Books",
-    },
-  ]
+const Search = ({ CartItem }) => {
+  // fixed Header
+  window.addEventListener("scroll", function () {
+    const search = document.querySelector(".search")
+    search.classList.toggle("active", window.scrollY > 100)
+  })
 
   return (
     <>
-      <div className='category'>
-        {data.map((value, index) => {
-          return (
-            <div className='box f_flex' key={index}>
-              <img src={value.cateImg} alt='' />
-              <span>{value.cateName}</span>
+      <section className='search'>
+        <div className='container c_flex'>
+          <div className='logo width '>
+            <img src={logo} alt='' />
+          </div>
+
+          <div className='search-box f_flex'>
+            <i className='fa fa-search'></i>
+            <input type='text' placeholder='Search and hit enter...' />
+            <span>All Category</span>
+          </div>
+
+          <div className='icon f_flex width'>
+            <i className='fa fa-user icon-circle'></i>
+            <div className='cart'>
+              <Link to='/cart'>
+                <i className='fa fa-shopping-bag icon-circle'></i>
+                <span>{CartItem.length === 0 ? "" : CartItem.length}</span>
+              </Link>
             </div>
-          )
-        })}
-      </div>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
 
-export default Categories
+export default Search
