@@ -1,5 +1,5 @@
 import React from "react"
-import './style.css'
+import "./style.css"
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   // Stpe: 7   calucate total of items
